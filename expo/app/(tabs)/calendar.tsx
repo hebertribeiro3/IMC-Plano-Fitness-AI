@@ -4,7 +4,7 @@ import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, addMont
 import { ptBR } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight } from 'lucide-react-native';
 import { useAsyncStorage } from '../../hooks/useAsyncStorage';
-import { AppData } from '../../../src/types';
+import { AppData } from '../../src/types';
 
 export default function CalendarScreen() {
   const [appData, , isReady] = useAsyncStorage<AppData>('fitai-data', { profile: {} as any, records: {} });

@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { useAsyncStorage } from '../../hooks/useAsyncStorage';
-import { AppData } from '../../../src/types';
+import { AppData } from '../../src/types';
 import { Target, Dumbbell, Activity } from 'lucide-react-native';
 
 export default function DashboardScreen() {
@@ -38,6 +38,13 @@ export default function DashboardScreen() {
         </View>
         <Text className="text-4xl font-bold">{totalDietDays} <Text className="text-lg text-zinc-400">dias</Text></Text>
       </View>
+
+      {appData.profile.plan && (
+        <View className="bg-white rounded-3xl p-6 mb-12 shadow-sm border border-zinc-100">
+          <Text className="text-xl font-bold mb-4">Seu Plano</Text>
+          <Text className="text-zinc-700 leading-6">{appData.profile.plan}</Text>
+        </View>
+      )}
     </ScrollView>
   );
 }

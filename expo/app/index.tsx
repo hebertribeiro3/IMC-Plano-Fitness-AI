@@ -3,8 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator 
 import { router } from 'expo-router';
 import { ArrowRight, Flame, Dumbbell } from 'lucide-react-native';
 import { useAsyncStorage } from '../hooks/useAsyncStorage';
-import { AppData } from '../../src/types'; // Reutilizando os tipos
-import { generateFitnessPlan } from '../../src/services/geminiService';
+import { AppData } from '../src/types';
+import { generateFitnessPlan } from '../src/services/geminiService';
 
 const initialAppData: AppData = {
   profile: { age: '', weight: '', height: '', bmi: null, goal: null, trainingDays: null, plan: null },
@@ -40,7 +40,7 @@ export default function WizardScreen() {
   const handleDaysSelection = async (days: number) => {
     setStep('loading');
     try {
-      const generatedPlan = await generateFitnessPlan(Number(age), Number(weight), Number(height), bmi, goal, days);
+      const generatedPlan = await generateFitnessPlan(Number(age), Number(weight), Number(height), bmi!, goal!, days);
       setAppData(prev => ({
         ...prev,
         profile: { age: Number(age), weight: Number(weight), height: Number(height), bmi, goal, trainingDays: days, plan: generatedPlan }
@@ -100,6 +100,7 @@ export default function WizardScreen() {
               </TouchableOpacity>
             ))}
           </View>
+          {error ? <Text className="text-red-500 text-center mt-4">{error}</Text> : null}
         </View>
       )}
 

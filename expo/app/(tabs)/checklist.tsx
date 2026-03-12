@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { CheckCircle2, Circle, Dumbbell, Utensils, Activity, Save } from 'lucide-react-native';
 import { useAsyncStorage } from '../../hooks/useAsyncStorage';
-import { AppData, DailyRecord } from '../../../src/types';
+import { AppData, DailyRecord } from '../../src/types';
 
 export default function ChecklistScreen() {
   const today = format(new Date(), 'yyyy-MM-dd');
